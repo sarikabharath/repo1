@@ -1,8 +1,12 @@
 pipeline {
     agent any
-
     stages {
-        stage('Compile') {
+        stage('Clone Repository') {
+            steps {
+                  git 'https://github.com/sarikabharath/repo1"  
+            }
+        }
+        stage('Build') {
             steps {
                 sh 'mvn compile'
             }
@@ -12,10 +16,9 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Clean Install') {
+        stage('Install') {
             steps {
                 sh 'mvn clean install'
             }
         }
     }
-}
