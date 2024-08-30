@@ -1,10 +1,13 @@
 pipeline {
     agent any
-
     stages {
+        stage('Clone Repository') {
+            steps {
+               git branch: 'master',url: git 'https://github.com/sarikabharath/repo1.git'
+            }
+        }
         stage('Build') {
             steps {
-             git branch: 'master',url: 'https://github.com/sarikabharath/repo1.git' 
                 sh 'mvn compile'
             }
         }
@@ -13,11 +16,9 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage('Install') {
             steps {
                 sh 'mvn clean install'
             }
         }
     }
-}
-
