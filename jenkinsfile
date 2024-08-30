@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-             git branch: 'master',url: 'git@github.com:sarikabharath/repo1.git'
+             git branch: 'master',url: 'https://github.com/sarikabharath/repo1.git' 
                 sh 'mvn compile'
             }
         }
